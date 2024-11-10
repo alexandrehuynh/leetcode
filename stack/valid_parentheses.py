@@ -1,5 +1,5 @@
 """
-Leet Code 20: Valid Parentheses: https://leetcode.com/problems/valid-parentheses/description/
+Leet Code 2. Valid Parentheses: https://leetcode.com/problems/valid-parentheses/description/
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
