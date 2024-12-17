@@ -1,0 +1,69 @@
+"""
+Leetcode 208. Implement Trie (Prefix Tree): https://leetcode.com/problems/implement-trie-prefix-tree/description/
+
+A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+
+Implement the Trie class:
+
+Trie() Initializes the trie object.
+void insert(String word) Inserts the string word into the trie.
+boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
+Example 1:
+
+Input
+["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+Output
+[null, null, true, false, true, null, true]
+
+Explanation
+Trie trie = new Trie();
+trie.insert("apple");
+trie.search("apple");   // return True
+trie.search("app");     // return False
+trie.startsWith("app"); // return True
+trie.insert("app");
+trie.search("app");     // return True
+ 
+
+Constraints:
+
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.
+"""
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}  # Map from character to TrieNode
+        self.is_end_of_word = False  # True if this node represents the end of a word
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()  # The root of the trie
+
+    def insert(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()  # Add a new node for the character
+            node = node.children[char]
+        node.is_end_of_word = True  # Mark the end of the word
+
+    def search(self, word: str) -> bool:
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False  # If the character path doesn’t exist, return False
+            node = node.children[char]
+        return node.is_end_of_word  # Return True if this is the end of a word
+
+    def startsWith(self, prefix: str) -> bool:
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False  # If the prefix path doesn’t exist, return False
+            node = node.children[char]
+        return True  # If we traversed the prefix successfully, return True
