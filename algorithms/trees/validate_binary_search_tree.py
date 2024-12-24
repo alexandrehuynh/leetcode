@@ -53,3 +53,11 @@ class Solution:
                     validate(node.right, node.val, upper))
         
         return validate(root)
+    
+"""
+Time Complexity
+	•	O(n): Every node is visited once.
+
+Space Complexity
+	•	O(h): Recursive stack space, where h is the height of the tree.
+"""

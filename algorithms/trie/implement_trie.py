@@ -67,3 +67,13 @@ class Trie:
                 return False  # If the prefix path doesn’t exist, return False
             node = node.children[char]
         return True  # If we traversed the prefix successfully, return True
+    
+"""
+Time Complexity
+	1.	Insert: O(m), where m is the length of the word.
+	2.	Search: O(m), where m is the length of the word.
+	3.	StartsWith: O(m), where m is the length of the prefix.
+
+Space Complexity
+	•	O(n * m), where n is the number of words and m is the average length of the words. Each node stores child references for the characters.
+"""

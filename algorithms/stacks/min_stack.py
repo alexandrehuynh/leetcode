@@ -60,3 +60,11 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.min_stack[-1]  # Return the top element of the min_stack
+    
+"""
+Time Complexity
+	•	All operations (push, pop, top, getMin) are O(1).
+
+Space Complexity
+	•	O(n): Both stack and min_stack store all elements.
+"""
